@@ -10,6 +10,8 @@ from setuptools import setup
 
 name = "pipcmd"
 
+version = "0.1"
+
 description = "Tool for installing and managing commands installed from PyPI"
 
 try:
@@ -78,6 +80,7 @@ args = dict(
     scripts=scripts,
     setup_requires=setup_requirements,
     url=url,
+    version=version,
 )
 
 
