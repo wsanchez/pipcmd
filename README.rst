@@ -41,7 +41,7 @@ If a project provides a command with a different name, or mutiple commands, add 
 Note that `pipcmd` does not attempt to install every command provided by a project.
 This avoids adding unwanted commands to your path, and in cases where a command name is used by multiple projects, it lets you be specific about which to install.
 
-You can list the installed commands:
+To list the installed commands:
 
 .. code-block:: console
 
@@ -49,3 +49,11 @@ You can list the installed commands:
     tox from tox[latest] using CPython 2.7.10
     trial from twisted[latest] using CPython 2.7.10
     twist from twisted[latest] using CPython 2.7.10
+
+To remove commands:
+
+.. code-block:: console
+
+    $ pipcmd remove trial tox
+    Removing: trial from twisted[latest] using CPython 2.7.10
+    Removing: tox from tox[latest] using CPython 2.7.10

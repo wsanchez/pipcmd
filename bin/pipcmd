@@ -182,6 +182,12 @@ have_command () {
 #
 command_info () {
     local command="${1}"; shift;
+
+    if ! have_command "${command}"; then
+        echo "No such command: ${command}" >&2;
+        return 1;
+    fi;
+
     local project="$(command_project_name "${command}")";
     local version="$(command_project_version "${command}")";
     local  python="$(command_python "${command}")";
@@ -218,9 +224,9 @@ command_project_name () {
     local name="${tmp##${pc_envs_rel_bin}/}";
     if [ "${name}" = "${tmp}" ]; then
         local path="$(command_path "${command}")";
-        echo                                                     \
-            "WARNING: Found command with unexpected link path:"  \
-            "${path} -> ${name}"                                 \
+        echo                                                   \
+            "ERROR: Found command with unexpected link path:"  \
+            "${path} -> ${name}"                               \
             >&2;
         return 1;
     fi;
@@ -243,9 +249,9 @@ command_project_version () {
     local version="${tmp##${pc_envs_rel_bin}/${project}/}";
     if [ "${version}" = "${tmp}" ]; then
         local path="$(command_path "${command}")";
-        echo                                                     \
-            "WARNING: Found command with unexpected link path:"  \
-            "${path} -> ${version}"                              \
+        echo                                                   \
+            "ERROR: Found command with unexpected link path:"  \
+            "${path} -> ${version}"                            \
             >&2;
         return 1;
     fi;
@@ -419,11 +425,71 @@ update_main () {
 ##
 
 #
+# Print usage and exit.
+# If given, print an error message and exit with EX_USAGE (64).
+#
+usage_remove () {
+    local program="$(basename "$0")";
+
+    if [ "${1--}" != "-" ]; then
+        echo "$@";
+        echo;
+    else
+        echo "Remove a command.";
+        echo "";
+    fi;
+
+    echo "Usage: ${program} ${subcommand} [options] [command ...]";
+    echo "Options:";
+    echo "  -h  Print this help and exit";
+
+    if [ "${1-}" = "-" ]; then
+        return 0;
+    fi;
+    exit 64;
+}
+
+#
+# Parse options from arguments.
+#
+parse_options_remove () {
+    local option;
+    local OPTIND=1;
+    while getopts "h" option; do
+        case "${option}" in
+            '?') usage_remove; ;;
+            'h') usage_remove -; exit 0; ;;
+        esac;
+    done;
+    shift $((${OPTIND} - 1));
+
+    if [ $# = 0 ]; then
+        usage_remove "No command specified";
+    else
+        remove_commands="$@";
+    fi;
+}
+
+#
 # Entry point
 #
 remove_main () {
-    echo "Unimplemented." >&2;
-    exit 44;
+    shift;
+    parse_options_remove "$@";
+
+    local remove_command;
+    for remove_command in ${remove_commands}; do
+        if ! have_command "${remove_command}"; then
+            echo "Not installed: ${remove_command}" >&2;
+            continue;
+        fi;
+
+        local link_command="$(command_path "${remove_command}")";
+
+        echo "Removing: $(command_info "${remove_command}")";
+
+        rm -f "${link_command}";
+    done;
 }
 
 
