@@ -37,7 +37,7 @@ If a project provides a command with a different name, or mutiple commands, add 
 Note that ``pipcmd`` does not attempt to install every command provided by a project.
 This avoids adding unwanted commands to your path, and in cases where a command name is used by multiple projects, it lets you be specific about which to install.
 
-`pipcmd` uses the ``python`` command found on the command line by default.
+``pipcmd`` uses the ``python`` command found on the command line by default.
 A different interpreter can be specified:
 
 .. code-block:: console
@@ -49,7 +49,7 @@ A different interpreter can be specified:
     ...
     Successfully installed mypy-0.560 psutil-5.4.3 typed-ast-1.1.0
 
-`pipcmd` uses latest available version of a project by default.
+``pipcmd`` uses latest available version of a project by default.
 A project can be pinned to a specific version:
 
 .. code-block:: console
