@@ -61,7 +61,7 @@ A project can be pinned to a specific version:
     Successfully installed twisted-15.0.0 zope.interface-4.4.3
 
 Note that we've installed ``trial`` and ``twist`` from the latest version of Twisted, but ``twistd`` from Twisted 15.
-That may or may not be a good idea, in this case, but ``pipcmd`` doesn't judge.
+That may or may not be a good idea in this case, but ``pipcmd`` doesn't judge.
 
 To list the installed commands:
 
