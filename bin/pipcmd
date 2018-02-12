@@ -47,7 +47,7 @@ usage () {
     echo "";
     echo "subcommand may be one of:";
     echo "    install - Install a new command";
-    echo "    update  - Update command";
+    # echo "    update  - Update command";
     echo "    remove  - Remove command";
     echo "    list    - List commands";
 
