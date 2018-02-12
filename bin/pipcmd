@@ -309,7 +309,7 @@ usage_install () {
     echo "  command - The command to install [default: same as project]";
     echo "Options:";
     echo "  -h          Print this help and exit";
-    echo "  -p path     Python interpreter to use [default: ${pc_default_python}]";
+    echo "  -p python   Python interpreter to use [default: ${pc_default_python}]";
     echo "  -v version  Project version to pin to [default: latest (not pinned)]";
 
     if [ "${1-}" = "-" ]; then
