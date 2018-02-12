@@ -1,20 +1,20 @@
 pipcmd
 ======
 
-`pipcmd` is a tool for installing and managing commands installed using pip.
+``pipcmd`` is a tool for installing and managing commands installed using pip.
 
 
-Installing `pipcmd`
--------------------
+Installing ``pipcmd``
+---------------------
 
-Installing `pipcmd` is as simple as installing the `pipcmd` script (`./bin/pipcmd`) in this source repository into a location in your `PATH`.
-You will also need to set `PATH` to include the `${HOME}/.pipcmd/bin` directory, which is where `pipcmd` will install commands.
+Installing ``pipcmd`` is as simple as installing the ``pipcmd`` script (``./bin/pipcmd``) in this source repository into a location in your ``PATH``.
+You will also need to set ``PATH`` to include the ``${HOME}/.pipcmd/bin`` directory, which is where ``pipcmd`` will install commands.
 
 
-Using `pipcmd`
---------------
+Using ``pipcmd``
+----------------
 
-If the command you want to install is provided with a project with the same name as the command, simply ask `pipcmd` to install the project:
+If the command you want to install is provided with a project with the same name as the command, simply ask ``pipcmd`` to install the project:
 
 .. code-block:: console
 
@@ -38,7 +38,7 @@ If a project provides a command with a different name, or mutiple commands, add 
     Installing collected packages: incremental, hyperlink, constantly, zope.interface, attrs, six, Automat, twisted
     Successfully installed Automat-0.6.0 attrs-17.4.0 constantly-15.1.0 hyperlink-17.3.1 incremental-17.5.0 six-1.11.0 twisted-17.9.0 zope.interface-4.4.3
 
-Note that `pipcmd` does not attempt to install every command provided by a project.
+Note that ``pipcmd`` does not attempt to install every command provided by a project.
 This avoids adding unwanted commands to your path, and in cases where a command name is used by multiple projects, it lets you be specific about which to install.
 
 To list the installed commands:
