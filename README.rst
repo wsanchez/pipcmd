@@ -1,7 +1,7 @@
 pipcmd
 ======
 
-``pipcmd`` is a tool for installing and managing commands installed using pip.
+``pipcmd`` is a tool for installing and managing commands installed from PyPI.
 
 
 Installing ``pipcmd``
