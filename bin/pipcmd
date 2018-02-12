@@ -35,11 +35,12 @@ usage () {
     if [ "${1--}" != "-" ]; then
         echo "$@";
         echo;
+    else
+        echo "${program} is a tool to manage commands installed from PyPI.";
+        echo "The PATH environment variable should include: ${pc_bin}";
+        echo "";
     fi;
 
-    echo "${program} is a tool to manage commands installed via pip";
-    echo "The PATH environment variable should include: ${pc_bin}";
-    echo "";
     echo "Usage: ${program} [options] subcommand [subcommand_arguments]";
     echo "Options:";
     echo "  -h  Print this help and exit (after subcommand for specifics)";
@@ -261,6 +262,9 @@ usage_install () {
     if [ "${1--}" != "-" ]; then
         echo "$@";
         echo;
+    else
+        echo "Install a command from PyPI.";
+        echo "";
     fi;
 
     echo "Usage: ${program} ${subcommand} [options] project [command ...]";
@@ -297,7 +301,7 @@ parse_options_install () {
     : ${install_version:=latest};
 
     if [ $# = 0 ]; then
-        usage "No project specified";
+        usage_install "No project specified";
     fi;
     install_project="${1}"; shift;
 
@@ -406,9 +410,12 @@ usage_list () {
     if [ "${1--}" != "-" ]; then
         echo "$@";
         echo;
+    else
+        echo "List installed commands.";
+        echo "";
     fi;
 
-    echo "Usage: ${program} ${subcommand} [-h]";
+    echo "Usage: ${program} ${subcommand} [options]";
     echo "Options:";
     echo "  -h  Print this help and exit";
 
@@ -426,14 +433,14 @@ parse_options_list () {
     local OPTIND=1;
     while getopts "h" option; do
         case "${option}" in
-            '?') usage_install; ;;
-            'h') usage_install -; exit 0; ;;
+            '?') usage_list; ;;
+            'h') usage_list -; exit 0; ;;
         esac;
     done;
     shift $((${OPTIND} - 1));
 
     if [ $# != 0 ]; then
-        usage "Unrecognized arguments: $@";
+        usage_list "Unrecognized arguments: $@";
     fi;
 }
 
