@@ -54,7 +54,7 @@ A project can be pinned to a specific version:
 
 .. code-block:: console
 
-    [tool:~] wsanchez$ pipcmd install -v 15 twisted twistd
+    $ pipcmd install -v 15 twisted twistd
     Installing twistd from twisted[15] using python
     New python executable in /Users/wsanchez/.pipcmd/env/twisted/15/bin/python
     ...
