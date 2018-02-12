@@ -7,7 +7,7 @@ pipcmd
 Installing `pipcmd`
 -------------------
 
-Installing `pipcmd` is as simple as installing the `pipcmd` script (`./bin/pipcmd) in this source repository into a location in your `PATH`.
+Installing `pipcmd` is as simple as installing the `pipcmd` script (`./bin/pipcmd`) in this source repository into a location in your `PATH`.
 You will also need to set `PATH` to include the `${HOME}/.pipcmd/bin` directory, which is where `pipcmd` will install commands.
 
 
