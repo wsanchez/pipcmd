@@ -10,7 +10,7 @@ from setuptools import setup
 
 name = "pipcmd"
 
-version = "0.1"
+version = "0.2-dev"
 
 description = "Tool for installing and managing commands installed from PyPI"
 
