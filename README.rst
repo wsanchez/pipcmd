@@ -1,6 +1,10 @@
 pipcmd
 ======
 
+.. image:: https://img.shields.io/pypi/pyversions/pipcmd.svg
+    :target: https://pypi.python.org/pypi/pipcmd
+    :alt: Python Version Compatibility
+
 ``pipcmd`` is a tool for installing and managing commands installed from PyPI.
 
 
