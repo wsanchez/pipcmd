@@ -178,6 +178,18 @@ have_command () {
 }
 
 #
+# Look up description of command
+#
+command_info () {
+    local command="${1}"; shift;
+    local project="$(command_project_name "${command}")";
+    local version="$(command_project_version "${command}")";
+    local  python="$(command_python "${command}")";
+
+    echo "${command} from ${project}[${version}] using ${python}";
+}
+
+#
 # List installed commands
 #
 list_commands () {
@@ -247,6 +259,25 @@ command_project_version () {
     echo "${version}";
 }
 
+#
+# Look up the python version for a command
+#
+command_python () {
+    local command="${1}"; shift;
+    local project="$(command_project_name "${command}")";
+    local version="$(command_project_version "${command}")";
+    local env_bin="$(env_path "${project}" "${version}")/bin";
+    local interpreter=$(
+        "${env_bin}/python" -c \
+        'import platform as p; print(p.python_implementation())'
+    );
+    local version=$(
+        "${env_bin}/python" -c \
+        'import platform as p; print(p.python_version())'
+    );
+
+    echo "${interpreter} ${version}";
+}
 
 ##
 # Handle the install command line
@@ -453,10 +484,7 @@ list_main () {
 
     local command;
     for command in $(list_commands); do
-        local project="$(command_project_name "${command}")";
-        local version="$(command_project_version "${command}")";
-
-        echo "${command} (from ${project}[${version}])";
+        command_info "${command}";
     done;
 }
 

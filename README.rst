@@ -46,6 +46,6 @@ You can list the installed commands:
 .. code-block:: console
 
     $ pipcmd list
-    tox (from tox[latest])
-    trial (from twisted[latest])
-    twist (from twisted[latest])
+    tox from tox[latest] using CPython 2.7.10
+    trial from twisted[latest] using CPython 2.7.10
+    twist from twisted[latest] using CPython 2.7.10
